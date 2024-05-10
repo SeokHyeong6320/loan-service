@@ -1,12 +1,13 @@
 package com.project.loanservice.controller;
 
-import com.project.loanservice.service.ProductService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.RestController;
+import com.project.loanservice.dto.ProductInput;
+import com.project.loanservice.response.Response;
+import com.project.loanservice.response.ResponseStatus;
+import org.springframework.http.ResponseEntity;
 
-@RestController
-@RequiredArgsConstructor
-public class ProductController {
+public interface ProductController {
 
-    private final ProductService productService;
+    ResponseEntity<Response> getProductInfo(String organizationCode);
+
+    ResponseEntity<ResponseStatus> obtainProductInfo(ProductInput productInput);
 }

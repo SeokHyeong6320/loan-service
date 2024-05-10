@@ -1,13 +1,13 @@
 package com.project.loanservice.controller;
 
-import com.project.loanservice.service.UserService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RestController;
+import com.project.loanservice.dto.UserInfoInput;
+import com.project.loanservice.response.Response;
+import org.springframework.http.ResponseEntity;
 
-@RestController
-@RequiredArgsConstructor
-public class UserController {
+public interface UserController {
 
-    private final UserService userService;
+    ResponseEntity<Response> obtainUserInfo(UserInfoInput input);
+
+    ResponseEntity<Response> getUserInfo(String userKey);
+
 }
