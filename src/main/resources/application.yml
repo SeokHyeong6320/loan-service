@@ -1,0 +1,27 @@
+#spring:
+#  jpa:
+#    generate-ddl: false
+#    show-sql: true
+#    hibernate:
+#      ddl-auto: update
+#      naming:
+#        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://localhost:3307/fintech?characterEncoding=UTF-8&serverTimezone=Asia/Seoul
+#    username: fintech
+#    password: fintech
+
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:tcp://localhost/~/test
+    username: sa
+    password:
+
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
