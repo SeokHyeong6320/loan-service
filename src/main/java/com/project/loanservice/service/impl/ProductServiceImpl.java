@@ -8,6 +8,9 @@ import com.project.loanservice.exception.ErrorCode;
 import com.project.loanservice.repository.ProductRepository;
 import com.project.loanservice.service.ProductService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,13 +18,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
+    private final CacheManager cacheManager;
 
     @Override
-    @Transactional
+    @CacheEvict(value = "Products", key = "#productPayload.organizationCode", cacheManager = "redisCacheManager")
     public void saveProductInfo(ProductPayload productPayload) {
 
         productRepository.save(
@@ -30,12 +35,13 @@ public class ProductServiceImpl implements ProductService {
     }
 
 
+
     @Override
-    @Transactional(readOnly = true)
+    @Cacheable(value = "Products", key = "#organizationCode", cacheManager = "redisCacheManager")
     public List<ProductPayload> getProductInfo(String organizationCode) {
 
         try {
-            Organization organization = Organization.valueOf(organizationCode);
+            Organization organization = Organization.fromCode(organizationCode);
 
             return productRepository.findAllByOrganization(organization)
                     .stream()

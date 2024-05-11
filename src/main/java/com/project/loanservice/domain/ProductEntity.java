@@ -16,6 +16,7 @@ public class ProductEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "prod_id")
     private Long id;
 
     @Convert(converter = OrganizationCodeConverter.class)

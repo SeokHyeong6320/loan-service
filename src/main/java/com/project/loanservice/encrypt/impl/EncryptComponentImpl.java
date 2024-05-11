@@ -3,6 +3,7 @@ package com.project.loanservice.encrypt.impl;
 import com.project.loanservice.encrypt.EncryptComponent;
 import com.project.loanservice.exception.CustomServiceException;
 import com.project.loanservice.exception.ErrorCode;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.Cipher;
@@ -15,7 +16,8 @@ import java.util.Base64;
 @Component
 public class EncryptComponentImpl implements EncryptComponent {
 
-    public static final String SECRET_KEY = "23498074325786324957863243432454";
+    @Value("${encrypt.secret-key}")
+    private String SECRET_KEY;
 
     private Base64.Encoder encoder = Base64.getEncoder();
     private Base64.Decoder decoder = Base64.getDecoder();

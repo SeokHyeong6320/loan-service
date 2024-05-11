@@ -37,6 +37,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public UserDto findUserInfo(String userKey) {
         UserEntity findUser = userRepository.findByUserKey(userKey)
                 .orElseThrow(() -> new CustomServiceException

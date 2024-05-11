@@ -17,13 +17,13 @@ public class EncryptAspect {
 
     private final EncryptComponent encryptComponent;
 
-    @Pointcut("execution(* com.project.loanservice.repository.*Repository.save(..))")
+    @Pointcut("execution(* com.project.loanservice.repository.UserRepository.save(..))")
     public void save() {}
 
-    @Pointcut("execution(* com.project.loanservice.repository.*Repository.find*(..))")
+    @Pointcut("execution(* com.project.loanservice.repository.UserRepository.find*(..))")
     public void find() {}
 
-    @Pointcut("execution(* com.project.loanservice.repository.*Repository.exist*(..))")
+    @Pointcut("execution(* com.project.loanservice.repository.UserRepository.exist*(..))")
     public void search() {}
 
     @Before("save() && args(entity)")
@@ -58,7 +58,7 @@ public class EncryptAspect {
         if (entity instanceof Optional<?>) {
             Optional<?> optional = (Optional<?>) returnValue;
             entity = optional.orElseThrow(() ->
-                    new CustomServiceException(ErrorCode.RETURNVALUE_INVALID));
+                    new CustomServiceException(ErrorCode.USER_NOT_FOUND));
         }
 
         for (Field field : entity.getClass().getDeclaredFields()) {

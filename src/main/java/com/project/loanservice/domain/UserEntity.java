@@ -12,6 +12,7 @@ import lombok.*;
 public class UserEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "usr_id")
     private Long id;
 
     @Encrypt

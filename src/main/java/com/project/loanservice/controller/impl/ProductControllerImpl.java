@@ -1,10 +1,13 @@
 package com.project.loanservice.controller.impl;
 
 import com.project.loanservice.controller.ProductController;
+import com.project.loanservice.domain.Organization;
 import com.project.loanservice.dto.ProductPayload;
 import com.project.loanservice.response.DataResponse;
 import com.project.loanservice.response.ResponseStatus;
 import com.project.loanservice.service.ProductService;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -37,7 +40,8 @@ public class ProductControllerImpl implements ProductController {
             @RequestBody ProductPayload productPayload
             ) {
 
-        productService.saveProductInfo(productPayload);
+        productService.saveProductInfo
+                (productPayload);
 
         return ResponseEntity.ok(ResponseStatus.onSuccess());
     }
