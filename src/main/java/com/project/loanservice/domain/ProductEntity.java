@@ -37,8 +37,10 @@ public class ProductEntity {
     private Double maxInterest;
 
 
+
+
     /**
-     * product name, code 값 동시에 넣어주기 위해 Builder 패턴 직접 구현
+     * product name, code 값 동시에 넣어주기 위해 Builder 패턴 커스텀
      */
     @Builder
     public ProductEntity(

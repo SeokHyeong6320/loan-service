@@ -11,8 +11,6 @@ public enum Organization {
     ORGANIZATION_ONE("00001"),
     ORGANIZATION_TWO("00002");
 
-
-
     private final String code;
 
     Organization(String code) {
@@ -26,4 +24,5 @@ public enum Organization {
                 .orElseThrow(() ->
                         new CustomServiceException("couldn't find Organization"));
     }
+
 }

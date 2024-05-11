@@ -1,13 +1,15 @@
 package com.project.loanservice.controller.impl;
 
 import com.project.loanservice.controller.ProductController;
-import com.project.loanservice.dto.ProductInput;
+import com.project.loanservice.dto.ProductPayload;
 import com.project.loanservice.response.Response;
 import com.project.loanservice.response.ResponseStatus;
 import com.project.loanservice.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/fintech/v1/product")
@@ -21,16 +23,21 @@ public class ProductControllerImpl implements ProductController {
     public ResponseEntity<Response> getProductInfo
             (@PathVariable String organizationCode) {
 
+        List<ProductPayload> productPayloads =
+                productService.getProductInfo(organizationCode);
+
 
         return ResponseEntity.ok(
-                new Response(null, ResponseStatus.onSuccess())
+                new Response(productPayloads, ResponseStatus.onSuccess())
         );
     }
 
     @PostMapping("/information")
     public ResponseEntity<ResponseStatus> obtainProductInfo(
-            @RequestBody ProductInput productInput
+            @RequestBody ProductPayload productPayload
             ) {
+
+        productService.saveProductInfo(productPayload);
 
         return ResponseEntity.ok(ResponseStatus.onSuccess());
     }
