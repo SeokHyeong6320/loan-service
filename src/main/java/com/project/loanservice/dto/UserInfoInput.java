@@ -10,7 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class UserInfoInput {
 
-    private String userIncomeAmount;
+    private Long userIncomeAmount;
     private String userName;
     private String userRegistrationNumber;
 

@@ -26,5 +26,5 @@ public class UserEntity {
     private String userName;
 
     @Column(name = "usr_inc_amt")
-    private String userIncAmount;
+    private Long userIncAmount;
 }

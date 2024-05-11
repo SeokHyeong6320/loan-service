@@ -19,13 +19,23 @@ public class UserDto {
 
     private String userName;
 
-    private String userIncAmount;
+    private Long userIncAmount;
 
     public UserEntity toEntity() {
         return UserEntity.builder()
                 .userKey(userKey)
                 .userName(userName)
                 .userIncAmount(userIncAmount)
+                .userRegNum(userRegNum)
+                .build();
+    }
+
+    public static UserDto fromEntity(UserEntity userEntity) {
+        return UserDto.builder()
+                .userKey(userEntity.getUserKey())
+                .userRegNum(userEntity.getUserRegNum())
+                .userName(userEntity.getUserName())
+                .userIncAmount(userEntity.getUserIncAmount())
                 .build();
     }
 
