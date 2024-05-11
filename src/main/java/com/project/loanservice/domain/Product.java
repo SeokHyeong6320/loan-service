@@ -1,6 +1,7 @@
 package com.project.loanservice.domain;
 
 import com.project.loanservice.exception.CustomServiceException;
+import com.project.loanservice.exception.ErrorCode;
 import lombok.Getter;
 
 import java.util.Arrays;
@@ -28,7 +29,7 @@ public enum Product {
                 .filter(p -> p.getCode().equals(code))
                 .findFirst()
                 .orElseThrow(() ->
-                        new CustomServiceException("couldn't find Product"));
+                        new CustomServiceException(ErrorCode.PRODUCT_NOT_FOUND));
 
     }
 
@@ -37,7 +38,7 @@ public enum Product {
                 .filter(p -> p.getName().equals(productName))
                 .findFirst()
                 .orElseThrow(() ->
-                        new CustomServiceException("couldn't find Product"));
+                        new CustomServiceException(ErrorCode.PRODUCT_NOT_FOUND));
     }
 
     public static Product fromCode(String productCode) {
@@ -45,6 +46,6 @@ public enum Product {
                 .filter(p -> p.getCode().equals(productCode))
                 .findFirst()
                 .orElseThrow(() ->
-                        new CustomServiceException("couldn't find Product"));
+                        new CustomServiceException(ErrorCode.PRODUCT_NOT_FOUND));
     }
 }

@@ -1,20 +1,13 @@
 package com.project.loanservice.exception;
 
+import lombok.Getter;
+
+@Getter
 public class CustomServiceException extends RuntimeException{
 
-    public CustomServiceException() {
-        super();
-    }
+   private final ErrorCode errorCode;
 
-    public CustomServiceException(String message) {
-        super(message);
-    }
-
-    public CustomServiceException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-    public CustomServiceException(Throwable cause) {
-        super(cause);
+    public CustomServiceException(ErrorCode errorCode) {
+        this.errorCode = errorCode;
     }
 }

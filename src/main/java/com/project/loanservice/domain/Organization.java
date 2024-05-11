@@ -1,6 +1,7 @@
 package com.project.loanservice.domain;
 
 import com.project.loanservice.exception.CustomServiceException;
+import com.project.loanservice.exception.ErrorCode;
 import lombok.Getter;
 
 import java.util.Arrays;
@@ -22,7 +23,7 @@ public enum Organization {
                 .filter(o -> o.getCode().equals(code))
                 .findFirst()
                 .orElseThrow(() ->
-                        new CustomServiceException("couldn't find Organization"));
+                        new CustomServiceException(ErrorCode.ORGANIZATION_NOT_FOUND));
     }
 
 }

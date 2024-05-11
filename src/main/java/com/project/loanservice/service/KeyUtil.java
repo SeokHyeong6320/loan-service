@@ -1,6 +1,6 @@
 package com.project.loanservice.service;
 
-public interface EncryptUtil {
+public interface KeyUtil {
 
     String generateUserKey();
 }

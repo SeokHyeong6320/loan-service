@@ -4,7 +4,7 @@ import com.project.loanservice.controller.UserController;
 import com.project.loanservice.domain.UserResponse;
 import com.project.loanservice.dto.UserDto;
 import com.project.loanservice.dto.UserInfoInput;
-import com.project.loanservice.response.Response;
+import com.project.loanservice.response.DataResponse;
 import com.project.loanservice.response.ResponseStatus;
 import com.project.loanservice.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -20,14 +20,14 @@ public class UserControllerImpl implements UserController {
 
     @Override
     @PostMapping("/information")
-    public ResponseEntity<Response> obtainUserInfo(
+    public ResponseEntity<DataResponse> obtainUserInfo(
             @RequestBody UserInfoInput input
     ) {
 
         UserDto userDto = userService.saveUser(input);
 
         return ResponseEntity.ok(
-                new Response(
+                new DataResponse(
                         UserResponse.userKey(userDto),
                         ResponseStatus.onSuccess()
                 )
@@ -36,12 +36,12 @@ public class UserControllerImpl implements UserController {
 
     @Override
     @GetMapping("/private-info/{userKey}")
-    public ResponseEntity<Response> getUserInfo(@PathVariable String userKey) {
+    public ResponseEntity<DataResponse> getUserInfo(@PathVariable String userKey) {
 
         UserDto userDto = userService.findUserInfo(userKey);
 
         return ResponseEntity.ok(
-                new Response(
+                new DataResponse(
                         UserResponse.privateInfo(userDto),
                         ResponseStatus.onSuccess()
                 )

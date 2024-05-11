@@ -2,7 +2,7 @@ package com.project.loanservice.controller.impl;
 
 import com.project.loanservice.controller.ProductController;
 import com.project.loanservice.dto.ProductPayload;
-import com.project.loanservice.response.Response;
+import com.project.loanservice.response.DataResponse;
 import com.project.loanservice.response.ResponseStatus;
 import com.project.loanservice.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +20,7 @@ public class ProductControllerImpl implements ProductController {
 
     @Override
     @GetMapping("/{organizationCode}")
-    public ResponseEntity<Response> getProductInfo
+    public ResponseEntity<DataResponse> getProductInfo
             (@PathVariable String organizationCode) {
 
         List<ProductPayload> productPayloads =
@@ -28,7 +28,7 @@ public class ProductControllerImpl implements ProductController {
 
 
         return ResponseEntity.ok(
-                new Response(productPayloads, ResponseStatus.onSuccess())
+                new DataResponse(productPayloads, ResponseStatus.onSuccess())
         );
     }
 

@@ -4,7 +4,7 @@ import lombok.Getter;
 
 
 @Getter
-public class Response {
+public class DataResponse {
 
     private final Object data;
 
@@ -12,7 +12,7 @@ public class Response {
     private final String responseMessage;
 
 
-    public Response(Object data, ResponseStatus status) {
+    public DataResponse(Object data, ResponseStatus status) {
         this.data = data;
         this.responseCode = status.getResponseCode();
         this.responseMessage = status.getResponseMessage();

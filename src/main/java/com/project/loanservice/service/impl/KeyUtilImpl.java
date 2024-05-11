@@ -1,12 +1,12 @@
 package com.project.loanservice.service.impl;
 
-import com.project.loanservice.service.EncryptUtil;
+import com.project.loanservice.service.KeyUtil;
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;
 
 @Component
-public class EncryptUtilImpl implements EncryptUtil {
+public class KeyUtilImpl implements KeyUtil {
 
     @Override
     public String generateUserKey() {

@@ -4,6 +4,7 @@ import com.project.loanservice.domain.Organization;
 import com.project.loanservice.dto.ProductDto;
 import com.project.loanservice.dto.ProductPayload;
 import com.project.loanservice.exception.CustomServiceException;
+import com.project.loanservice.exception.ErrorCode;
 import com.project.loanservice.repository.ProductRepository;
 import com.project.loanservice.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -43,7 +44,7 @@ public class ProductServiceImpl implements ProductService {
                     .collect(Collectors.toList());
 
         } catch (IllegalArgumentException e) {
-            throw new CustomServiceException("couldn't find organization");
+            throw new CustomServiceException(ErrorCode.PRODUCT_NOT_FOUND);
         }
     }
 }

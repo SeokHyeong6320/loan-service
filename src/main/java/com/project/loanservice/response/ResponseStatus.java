@@ -16,4 +16,8 @@ public class ResponseStatus {
     public static ResponseStatus onSuccess() {
         return new ResponseStatus(SUCCESS.getCode(), SUCCESS.getMessage());
     }
+
+    public static ResponseStatus onFail() {
+        return new ResponseStatus(FAIL.getCode(), FAIL.getMessage());
+    }
 }
