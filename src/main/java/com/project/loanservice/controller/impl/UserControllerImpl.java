@@ -28,7 +28,7 @@ public class UserControllerImpl implements UserController {
 
         return ResponseEntity.ok(
                 new Response(
-                        UserResponse.toEnroll(userDto),
+                        UserResponse.userKey(userDto),
                         ResponseStatus.onSuccess()
                 )
         );
@@ -42,7 +42,7 @@ public class UserControllerImpl implements UserController {
 
         return ResponseEntity.ok(
                 new Response(
-                        UserResponse.toInquiry(userDto),
+                        UserResponse.privateInfo(userDto),
                         ResponseStatus.onSuccess()
                 )
         );

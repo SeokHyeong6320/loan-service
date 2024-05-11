@@ -7,20 +7,20 @@ import lombok.Getter;
 public class UserResponse {
 
     @Getter
-    public static class enroll {
+    public static class userKey {
         private final String userKey;
 
-        private enroll(String userKey) {
+        private userKey(String userKey) {
             this.userKey = userKey;
         }
     }
 
     @Getter
-    public static class inquiry {
+    public static class privateInfo {
         private final String userKey;
         private final String userRegistrationNumber;
 
-        private inquiry(String userKey, String userRegistrationNumber) {
+        private privateInfo(String userKey, String userRegistrationNumber) {
             this.userKey = userKey;
             this.userRegistrationNumber = userRegistrationNumber;
         }
@@ -29,12 +29,12 @@ public class UserResponse {
     private UserResponse() {
     }
 
-    public static UserResponse.enroll toEnroll(UserDto userDto) {
-        return new UserResponse.enroll(userDto.getUserKey());
+    public static userKey userKey(UserDto userDto) {
+        return new userKey(userDto.getUserKey());
     }
 
-    public static UserResponse.inquiry toInquiry(UserDto userDto) {
-        return new UserResponse.inquiry(
+    public static privateInfo privateInfo(UserDto userDto) {
+        return new privateInfo(
                 userDto.getUserKey(), userDto.getUserRegNum()
         );
     }
