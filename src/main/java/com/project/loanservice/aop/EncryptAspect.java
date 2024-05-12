@@ -1,5 +1,7 @@
-package com.project.loanservice.encrypt;
+package com.project.loanservice.aop;
 
+import com.project.loanservice.encrypt.Encrypt;
+import com.project.loanservice.encrypt.EncryptComponent;
 import com.project.loanservice.exception.CustomServiceException;
 import com.project.loanservice.exception.ErrorCode;
 import lombok.RequiredArgsConstructor;

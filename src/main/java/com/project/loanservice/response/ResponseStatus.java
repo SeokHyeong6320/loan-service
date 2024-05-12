@@ -4,7 +4,8 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-import static com.project.loanservice.response.ResponseStatusList.*;
+import static com.project.loanservice.response.ResponseStatusList.FAIL;
+import static com.project.loanservice.response.ResponseStatusList.SUCCESS;
 
 @Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)

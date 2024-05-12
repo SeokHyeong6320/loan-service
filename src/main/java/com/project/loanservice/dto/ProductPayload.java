@@ -2,7 +2,10 @@ package com.project.loanservice.dto;
 
 import com.project.loanservice.domain.Organization;
 import com.project.loanservice.domain.Product;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
 @AllArgsConstructor

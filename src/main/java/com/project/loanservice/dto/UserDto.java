@@ -1,7 +1,6 @@
 package com.project.loanservice.dto;
 
 import com.project.loanservice.domain.UserEntity;
-import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
