@@ -4,15 +4,15 @@ import lombok.Getter;
 
 
 @Getter
-public class DataResponse {
+public class DataResponse<T> {
 
-    private final Object data;
+    private final T data;
 
     private final String responseCode;
     private final String responseMessage;
 
 
-    public DataResponse(Object data, ResponseStatus status) {
+    public DataResponse(T data, ResponseStatus status) {
         this.data = data;
         this.responseCode = status.getResponseCode();
         this.responseMessage = status.getResponseMessage();

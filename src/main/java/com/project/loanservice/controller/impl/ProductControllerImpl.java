@@ -5,7 +5,9 @@ import com.project.loanservice.dto.ProductPayload;
 import com.project.loanservice.response.DataResponse;
 import com.project.loanservice.response.ResponseStatus;
 import com.project.loanservice.service.ProductService;
+import com.project.loanservice.swagger.Swagger;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +21,7 @@ public class ProductControllerImpl implements ProductController {
     private final ProductService productService;
 
     @Override
+    @Swagger.GetProductInfo
     @GetMapping("/{organizationCode}")
     public ResponseEntity<DataResponse> getProductInfo
             (@PathVariable String organizationCode) {
@@ -32,7 +35,9 @@ public class ProductControllerImpl implements ProductController {
         );
     }
 
-    @PostMapping("/information")
+    @Override
+    @Swagger.ObtainProductInfo
+    @PostMapping(name = "productPayload", value = "/information", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ResponseStatus> obtainProductInfo(
             @RequestBody ProductPayload productPayload
             ) {

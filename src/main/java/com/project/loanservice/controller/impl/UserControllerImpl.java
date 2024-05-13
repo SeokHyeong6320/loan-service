@@ -1,12 +1,13 @@
 package com.project.loanservice.controller.impl;
 
 import com.project.loanservice.controller.UserController;
-import com.project.loanservice.domain.UserResponse;
 import com.project.loanservice.dto.UserDto;
 import com.project.loanservice.dto.UserInfoInput;
 import com.project.loanservice.response.DataResponse;
 import com.project.loanservice.response.ResponseStatus;
+import com.project.loanservice.response.UserResponse;
 import com.project.loanservice.service.UserService;
+import com.project.loanservice.swagger.Swagger;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +20,7 @@ public class UserControllerImpl implements UserController {
     private final UserService userService;
 
     @Override
+    @Swagger.ObtainUserInfo
     @PostMapping("/information")
     public ResponseEntity<DataResponse> obtainUserInfo(
             @RequestBody UserInfoInput input
@@ -35,6 +37,7 @@ public class UserControllerImpl implements UserController {
     }
 
     @Override
+    @Swagger.GetUserInfo
     @GetMapping("/private-info/{userKey}")
     public ResponseEntity<DataResponse> getUserInfo(@PathVariable String userKey) {
 

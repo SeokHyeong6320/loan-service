@@ -1,4 +1,4 @@
-package com.project.loanservice.domain;
+package com.project.loanservice.response;
 
 import com.project.loanservice.dto.UserDto;
 import lombok.Getter;
